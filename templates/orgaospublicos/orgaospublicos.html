@@ -1,0 +1,36 @@
+{% extends 'orgaospublicos/baselista.html' %}
+
+{% block content %}
+<div class="container">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nome do Órgão Público</th>
+				<th>Foto</th>
+				<th>Descrição</th>
+				<th>Tipo</th>
+				<th>Conceito</th>
+				<th>Editar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for orgaopublico in orgaospublicos %}
+			<tr>
+				<td>{{orgaopublico.nome_orgaopublico}}</td>
+				<td><img src="{{orgaopublico.foto_url}}" class="img-fluid img-thumbnail">
+				</td>
+				<td>{{orgaopublico.desc_orgaopublico}}</td>
+				<td>{{orgaopublico.tipo_orgaopublico}}</td>
+				<td>{{orgaopublico.conceito_orgaopublico}}</td>
+				<td><a href="{% url 'editar_orgaospublicos' orgaopublico.id %}" class="btn btn-warning">Editar</a></td>
+				<td><a href="{% url 'deletar_orgaospublicos' orgaopublico.id %}" class="btn btn-danger">Excluir</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+{{orgaospublicos}}
+
+{% endblock content %}
